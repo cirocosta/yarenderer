@@ -46,5 +46,3 @@ set(${PROJECT_NAME}_LIBRARIES ${LIBS}
     FORCE
 )
 
-message("Include Dirs: ${yarenderer_INCLUDE_DIRS}")
-

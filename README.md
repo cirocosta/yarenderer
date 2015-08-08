@@ -1,12 +1,12 @@
-# yabrowser
+# yarenderer
 
-> **Y**et **A**nother **browser**
+> **Y**et **A**nother **renderer**
 
 ## Install
 
 ```sh
 # fetch dependencies as well
-$ git submodule update --init --recursive
+$ git submodule update --init --recursive --depth=10
 
 # generate build files
 $ mkdir build
@@ -15,10 +15,10 @@ $ cmake -Dtest=ON -DCMAKE_BUILD_TYPE=Debug ..
 
 # build
 # -jN where N = #cores so that we build in parallel
-$ make -j5 && make test
-$ ./src/yabrowser
+$ make -j5 
+$ ./src/main
 
-# :DD
+# :D
 ```
 
 ## LICENSE
