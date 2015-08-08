@@ -17,11 +17,14 @@ else()
     message(STATUS "Please use a different C++ compiler.")
 endif()
 
+set(LIBS "")
+set(INCLUDES "")
+
 #     --    dependencies
 
-find_package(GLEW REQUIRED)
-set(INCLUDES ${GLEW_INCLUDE_DIRS})
-set(LIBS ${GLEW_LIBRARIES})
+find_package(OpenGL REQUIRED)
+set(LIBS ${LIBS} ${OPENGL_gl_LIBRARY})
+set(INCLUDES ${INCLUDES} ${OPENGL_INCLUDE_DIR})
 
 add_subdirectory(lib/)
 

@@ -19,7 +19,7 @@ set(LOCAL_LIBS ${LOCAL_LIBS} glew PARENT_SCOPE)
 
 
 #     --    glm
-set(LOCAL_INCLUDES ${LOCAL_INCLUDES} ${glm_SOURCE_DIR} )
+set(LOCAL_INCLUDES ${LOCAL_INCLUDES} ${CMAKE_CURRENT_SOURCE_DIR}/glm)
 
 
 # Push local includes and libs to parent scope
