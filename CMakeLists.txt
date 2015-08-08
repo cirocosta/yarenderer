@@ -17,33 +17,31 @@ else()
     message(STATUS "Please use a different C++ compiler.")
 endif()
 
-
 #     --    dependencies
 
+find_package(GLEW REQUIRED)
+set(INCLUDES ${GLEW_INCLUDE_DIRS})
+set(LIBS ${GLEW_LIBRARIES})
+
 add_subdirectory(lib/)
-set(INCLUDES
-    ${yahtml-parser_INCLUDES}
-    ${yacss-parser_INCLUDES}
-    ${yahttp-parser_INCLUDES}
-    ${PROJECT_SOURCE_DIR}/includes
-)
 
 #     --    source
 
 add_subdirectory(src/)
 
-
 #     --    global variables
 
-set(${PROJECT_NAME}_INCLUDES ${INCLUDES}
+set(${PROJECT_NAME}_INCLUDE_DIRS ${INCLUDES}
     CACHE INTERNAL
     "${PROJECT_NAME}: Include Directories"
     FORCE
 )
 
-set(${PROJECT_NAME}_LIBS ${LIBS}
+set(${PROJECT_NAME}_LIBRARIES ${LIBS}
     CACHE INTERNAL
     "${PROJECT_NAME}: Link Libraries"
     FORCE
 )
+
+message("Include Dirs: ${yarenderer_INCLUDE_DIRS}")
 
