@@ -9,13 +9,15 @@ set(GLFW_BUILD_DOCS OFF)
 
 add_subdirectory(glfw/)
 set(LOCAL_INCLUDES ${LOCAL_INCLUDES} ${GLFW_SOURCE_DIR}/include)
-set(LOCAL_LIBS ${LOCAL_LIBS} glfw ${GLFW_LIBRARIES} PARENT_SCOPE)
+set(LOCAL_LIBS ${LOCAL_LIBS} glfw ${GLFW_LIBRARIES})
 
 
 #     --    glew
+set(glew-cmake_BUILD_STATIC OFF)
+set(glew-cmake_BUILD_SHARED ON)
 add_subdirectory(glew-cmake/)
 set(LOCAL_INCLUDES ${LOCAL_INCLUDES} ${glew_SOURCE_DIR}/include)
-set(LOCAL_LIBS ${LOCAL_LIBS} glew PARENT_SCOPE)
+set(LOCAL_LIBS ${LOCAL_LIBS} libglew_shared)
 
 
 #     --    glm
