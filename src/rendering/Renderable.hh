@@ -16,22 +16,26 @@ struct VertexData {
 class Renderable
 {
 protected:
+  // a group (inherits from renderable) won't set color and other stuff
   Renderable() { set_default_uvs(); }
-
-public:
-  const glm::vec3 position;
-  const glm::vec2 size;
-  const glm::vec4 color;
+  const glm::vec3 m_position;
+  const glm::vec2 m_size;
+  const glm::vec4 m_color;
   std::vector<glm::vec2> m_uvs;
 
 public:
   Renderable(glm::vec3 p, glm::vec2 s, glm::vec4 c)
-      : position(p), size(s), color(c)
+      : m_position(p), m_size(s), m_color(c)
   {
     set_default_uvs();
   }
 
   virtual ~Renderable();
+
+  inline const glm::vec3& getPosition() const { return m_position; }
+  inline const glm::vec2& getSize() const { return m_size; }
+  inline const glm::vec4& getColor() const { return m_color; }
+  inline const std::vector<glm::vec2>& getUVs() const { return m_uvs; }
 
   virtual void submit(Renderer* renderer) const { renderer->submit(this); }
 
