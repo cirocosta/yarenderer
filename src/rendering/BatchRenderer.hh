@@ -32,7 +32,7 @@ private:
 
 public:
   BatchRenderer();
-  ~BatchRenderer();
+  virtual ~BatchRenderer();
 
   void begin() override;
   void submit(const Renderable* renderable) override;

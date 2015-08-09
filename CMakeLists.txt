@@ -53,6 +53,12 @@ set(${PROJECT_NAME}_LIBRARIES ${LIBS}
     FORCE
 )
 
+set(${PROJECT_NAME}_LIBRARY yarenderer
+    CACHE INTERNAL
+    "${PROJECT_NAME}: Link Libraries"
+    FORCE
+)
+
 if (test)
   find_package(OSMesa)
   add_subdirectory(tests/)
