@@ -10,6 +10,7 @@ namespace yarenderer
 
 struct VertexData {
   glm::vec3 vertex;
+  glm::vec2 uv;
   unsigned color;
 };
 
