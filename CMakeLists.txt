@@ -17,6 +17,7 @@ else()
     message(STATUS "Please use a different C++ compiler.")
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/Modules)
 set(LIBS "")
 set(INCLUDES 
   ${PROJECT_SOURCE_DIR}
@@ -29,11 +30,14 @@ find_package(OpenGL REQUIRED)
 set(LIBS ${LIBS} ${OPENGL_gl_LIBRARY})
 set(INCLUDES ${INCLUDES} ${OPENGL_INCLUDE_DIR})
 
+
+
 add_subdirectory(lib/)
 
 #     --    source
 
 add_subdirectory(src/)
+
 
 #     --    global variables
 
@@ -50,5 +54,6 @@ set(${PROJECT_NAME}_LIBRARIES ${LIBS}
 )
 
 if (test)
+  find_package(OSMesa)
   add_subdirectory(tests/)
 endif()

@@ -21,14 +21,6 @@ static std::string str_fmt(const char* fmt, Args... args)
   return std::string(buf.get(), buf.get() + size - 1);
 }
 
-static void CheckOpenGLError(const char* stmt, const char* fname, int line)
-{
-  GLenum err = glGetError();
-  if (err != GL_NO_ERROR) {
-    throw std::runtime_error(yarenderer::utils::str_fmt(
-        "OpenGL error %08x, at %s:%i - for %s\n", err, fname, line, stmt));
-  }
-}
 } // ns yarenderer
 } // ns utils
 
@@ -56,18 +48,12 @@ static void CheckOpenGLError(const char* stmt, const char* fname, int line)
 #define DASSERT(condition, message) ASSERT(condition, message)
 #define DLOG(message) LOG(message)
 #define DLOGERR(message) LOGERR(message)
-#define GL_CHECK(stmt) stmt
 
 #else
 #define DASSERT(condition, message)
 #define DLOG(message)
 #define DLOGERR(message)
 
-#define GL_CHECK(stmt)                                                         \
-  do {                                                                         \
-    stmt;                                                                      \
-    yarenderer::utils::CheckOpenGLError(#stmt, __FILE__, __LINE__);            \
-  } while (0)
 #endif // ! NDEBUG
 
 #endif // ! YARENDERER__DEBUG_HH
