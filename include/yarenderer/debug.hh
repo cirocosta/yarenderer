@@ -6,6 +6,11 @@
 #include <string>
 #include <cstdio>
 
+namespace yarenderer
+{
+namespace utils
+{
+
 template <typename... Args>
 static std::string str_fmt(const char* fmt, Args... args)
 {
@@ -20,10 +25,12 @@ static void CheckOpenGLError(const char* stmt, const char* fname, int line)
 {
   GLenum err = glGetError();
   if (err != GL_NO_ERROR) {
-    throw std::runtime_error(str_fmt("OpenGL error %08x, at %s:%i - for %s\n",
-                                     err, fname, line, stmt));
+    throw std::runtime_error(yarenderer::utils::str_fmt(
+        "OpenGL error %08x, at %s:%i - for %s\n", err, fname, line, stmt));
   }
 }
+} // ns yarenderer
+} // ns utils
 
 #define ASSERT(condition, message)                                             \
   do {                                                                         \
@@ -36,12 +43,12 @@ static void CheckOpenGLError(const char* stmt, const char* fname, int line)
 
 #define LOG(message)                                                           \
   do {                                                                         \
-    std::cout << "LOG: " << message << std::endl;                              \
+    std::cout << "(LOG): " << message << std::endl;                            \
   } while (0)
 
 #define LOGERR(message)                                                        \
   do {                                                                         \
-    std::cerr << "LOG: " << message << std::endl;                              \
+    std::cerr << "(LOG_ERR): " << message << std::endl;                        \
   } while (0)
 
 #ifndef NDEBUG
@@ -59,7 +66,7 @@ static void CheckOpenGLError(const char* stmt, const char* fname, int line)
 #define GL_CHECK(stmt)                                                         \
   do {                                                                         \
     stmt;                                                                      \
-    CheckOpenGLError(#stmt, __FILE__, __LINE__);                               \
+    yarenderer::utils::CheckOpenGLError(#stmt, __FILE__, __LINE__);            \
   } while (0)
 #endif // ! NDEBUG
 

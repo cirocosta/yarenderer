@@ -1,11 +1,7 @@
 include_directories(${INCLUDES})
 
-add_library(yarenderer Window.cc)
-target_link_libraries(yarenderer ${LIBS})
+file(GLOB_RECURSE SRCS *.cc)
+add_library(yarenderer ${SRCS})
 
-add_executable(main main.cc)
-target_link_libraries(main
-  yarenderer
-)
-
+set(LIBS ${LIBS} yarenderer PARENT_SCOPE)
 

@@ -3,7 +3,7 @@
 
 #include "GL/glew.h"
 #include "GLFW/glfw3.h"
-#include "debug.hh"
+#include "yarenderer/debug.hh"
 
 #include <stdexcept>
 

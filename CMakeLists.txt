@@ -18,7 +18,10 @@ else()
 endif()
 
 set(LIBS "")
-set(INCLUDES "")
+set(INCLUDES 
+  ${PROJECT_SOURCE_DIR}
+  ${PROJECT_SOURCE_DIR}/include
+)
 
 #     --    dependencies
 
@@ -46,3 +49,6 @@ set(${PROJECT_NAME}_LIBRARIES ${LIBS}
     FORCE
 )
 
+if (test)
+  add_subdirectory(tests/)
+endif()
