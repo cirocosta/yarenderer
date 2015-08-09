@@ -1,48 +1,13 @@
-#include "yarenderer/gl_debug.hh"
-#include "GL/glew.h"
+#include "OSContext.hh"
+#include <iostream>
 
-#ifndef GLAPIENTRY
-#define GLAPIENTRY
-#endif
-
-#ifndef GLAPI
-#define GLAPI
-#endif
-
-#include "GL/osmesa.h"
-
-#include <stdio.h>
-#include <stdlib.h>
-
-#define WIDTH 400
-#define HEIGHT 400
-
-void render() {}
+using namespace yarenderer;
+using yarenderer::utils::OSContext;
 
 int main(int argc, char *argv[])
 {
-  GLushort *buffer;
+  OSContext ctx (400, 400);
+  ctx.make_current();
 
-  OSMesaContext ctx = OSMesaCreateContextExt(GL_RGBA, 16, 0, 0, NULL);
-
-  ASSERT(ctx, "OSMesaCreateContext failed!\n");
-
-  /* Allocate the image buffer */
-  buffer = (GLushort *)malloc(WIDTH * HEIGHT * 4 * sizeof(GLushort));
-
-  ASSERT(buffer, "Failed to allocate image buffer");
-
-  /* Bind the buffer to the context and make it current */
-  ASSERT(OSMesaMakeCurrent(ctx, buffer, GL_UNSIGNED_SHORT, WIDTH, HEIGHT),
-         "OSMesaMakeCurrent failed!");
-
-  render();
-
-  /* free the image buffer */
-  free(buffer);
-
-  /* destroy the context */
-  OSMesaDestroyContext(ctx);
-
-  return EXIT_SUCCESS;
+  return 0;
 }
