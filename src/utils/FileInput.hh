@@ -6,7 +6,8 @@
 #include <cstdio>
 #include <cstring>
 #include <string>
-#include "yarenderer/debug.hh"
+
+#include "debug.hh"
 
 namespace yarenderer
 {

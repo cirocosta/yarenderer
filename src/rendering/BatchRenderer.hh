@@ -2,7 +2,7 @@
 #define YARENDERER__BATCHRENDERER_HH
 
 #include "Renderer.hh"
-#include "Renderable.hh"
+#include "yarenderer/Renderable.hh"
 #include "buffers/IndexBuffer.hh"
 #include "glm/gtc/type_ptr.hpp"
 

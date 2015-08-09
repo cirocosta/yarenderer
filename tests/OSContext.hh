@@ -1,10 +1,19 @@
 #ifndef YARENDERER__UTILS__OSCONTEXT_HH
 #define YARENDERER__UTILS__OSCONTEXT_HH
 
-#include <vector>
 #include "GL/osmesa.h"
-#include "yarenderer/debug.hh"
 
+#include <vector>
+#include <iostream>
+
+#define ASSERT(condition, message)                                             \
+  do {                                                                         \
+    if (!(condition)) {                                                        \
+      std::cerr << "Assertion `" #condition "` failed in " << __FILE__         \
+                << " line " << __LINE__ << ": " << message << std::endl;       \
+      std::exit(EXIT_FAILURE);                                                 \
+    }                                                                          \
+  } while (0)
 
 namespace yarenderer
 {

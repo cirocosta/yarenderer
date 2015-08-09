@@ -4,7 +4,7 @@
 #include "GL/glew.h"
 #include "glm/gtc/type_ptr.hpp"
 #include "utils/FileInput.hh"
-#include "yarenderer/debug.hh"
+#include "utils/debug.hh"
 
 #include <string>
 #include <vector>

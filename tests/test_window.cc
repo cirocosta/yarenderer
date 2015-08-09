@@ -1,4 +1,7 @@
 #include "yarenderer/Window.hh"
+#include "yarenderer/TileLayer.hh"
+#include "yarenderer/Renderable.hh"
+
 #include <iostream>
 
 using namespace yarenderer;
@@ -7,6 +10,8 @@ int main()
 {
   Window window("yarenderer", 900, 600);
   glClearColor(0.0, 0.0, 0.1, 1.0);
+
+  TileLayer layer;
 
   while (!window.closed()) {
     window.clear();

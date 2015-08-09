@@ -2,7 +2,7 @@
 #define YARENDERER__RENDERABLE_HH
 
 #include "glm/glm.hpp"
-#include "Renderer.hh"
+#include "rendering/Renderer.hh"
 #include <vector>
 
 namespace yarenderer
