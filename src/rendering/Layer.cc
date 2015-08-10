@@ -13,7 +13,6 @@ Layer::Layer(Renderer* renderer, Shader* shader, glm::mat4 projection)
 
 Layer::~Layer()
 {
-  // FIXME
   delete m_shader;
   delete m_renderer;
 

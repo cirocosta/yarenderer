@@ -1,6 +1,9 @@
 #ifndef YARENDERER__UTILS__FILEINPUT_HH
 #define YARENDERER__UTILS__FILEINPUT_HH
 
+#include <climits>
+#include <unistd.h>
+#include <libgen.h>
 #include <iostream>
 #include <cerrno>
 #include <cstdio>
@@ -32,9 +35,24 @@ public:
     fseek(file, 0, SEEK_SET);
     fread(data, 1, length, file);
     fclose(file);
+    std::string result (data);
     delete[] data;
+    data = nullptr;
+    
+    return result;
+  }
 
-    return std::string(data);
+  inline static std::string get_selfdir()
+  {
+    char buff[PATH_MAX];
+    ssize_t len = readlink("/proc/self/exe", buff, sizeof(buff) - 1);
+
+    ASSERT(len != -1, "get_selfdir couldn't execute readlink properly.");
+
+    buff[len] = '\0';
+    dirname(buff);
+
+    return std::string(buff);
   }
 };
 }
