@@ -1,7 +1,7 @@
 #ifndef YARENDERER__RENDERABLE_HH
 #define YARENDERER__RENDERABLE_HH
 
-#include "glm/glm.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include "rendering/Renderer.hh"
 #include <vector>
 
@@ -31,7 +31,7 @@ public:
     set_default_uvs();
   }
 
-  virtual ~Renderable();
+  virtual ~Renderable() { }
 
   inline const glm::vec3& getPosition() const { return m_position; }
   inline const glm::vec2& getSize() const { return m_size; }
@@ -41,6 +41,7 @@ public:
   virtual void submit(Renderer* renderer) const { renderer->submit(this); }
 
 private:
+  // FIXME
   void set_default_uvs()
   {
     m_uvs.push_back(glm::vec2(0, 0));

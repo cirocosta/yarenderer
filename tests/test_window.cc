@@ -1,6 +1,6 @@
 #include "yarenderer/Window.hh"
 #include "yarenderer/TileLayer.hh"
-#include "yarenderer/Renderable.hh"
+#include "yarenderer/Rect.hh"
 
 #include <iostream>
 
@@ -13,8 +13,11 @@ int main()
 
   TileLayer layer;
 
+  layer.add(new Rect(0.0, 0.0, 5.0, 5.0));
+
   while (!window.closed()) {
     window.clear();
+    layer.render();
     window.update();
   }
 
