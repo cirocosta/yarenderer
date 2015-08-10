@@ -3,17 +3,18 @@
 namespace yarenderer
 {
 
-Shader::Shader(const char* vpath, const char* fpath)
+Shader::Shader(const char* vpath, const char* fpath,
+               const std::vector<std::string>& ulocs)
     : m_vertex_path(vpath), m_fragment_path(fpath)
 {
-  m_shader_id = _load();
+  m_shader_id = _load(ulocs);
   ASSERT(m_shader_id, vpath << " and/org " << fpath
                             << " have a compilation error.");
 }
 
 Shader::~Shader() { glDeleteProgram(m_shader_id); }
 
-GLuint Shader::_load()
+GLuint Shader::_load(const std::vector<std::string>& ulocs)
 {
   GLuint program = glCreateProgram();
   GLuint vertex = glCreateShader(GL_VERTEX_SHADER);
@@ -64,13 +65,27 @@ GLuint Shader::_load()
   glAttachShader(program, vertex);
   glAttachShader(program, fragment);
 
+  glBindAttribLocation(program, 0, "position");
+  glBindAttribLocation(program, 1, "uv");
+  glBindAttribLocation(program, 2, "color");
+
+  glBindFragDataLocation(program, 0, "FragColor");
+
   glLinkProgram(program);
   glValidateProgram(program);
 
   glDeleteShader(vertex);
   glDeleteShader(fragment);
 
+  glUseProgram(program);
+  for (const auto& location : ulocs) {
+    GLint loc = glGetUniformLocation(program, location.c_str());
+    ASSERT(loc >= 0, "getUniformLocation ("
+                         << location << ") should've returned a >0 number.");
+    locations[location] = loc;
+  }
+  glUseProgram(0);
+
   return program;
 }
-
-};
+}; // ns yarenderer

@@ -27,20 +27,22 @@ static std::string str_fmt(const char* fmt, Args... args)
 #define ASSERT(condition, message)                                             \
   do {                                                                         \
     if (!(condition)) {                                                        \
-      std::cerr << "Assertion `" #condition "` failed in " << __FILE__         \
-                << " line " << __LINE__ << ": " << message << std::endl;       \
+      std::cerr << "\n\x1b[31;1mAssertion `" #condition "` failed.\x1b[0m\n"   \
+                << "File:\t\x1b[30;1m" << __FILE__                             \
+                << "\x1b[0m line \x1b[30;1m" << __LINE__                       \
+                << "\x1b[0m: \nMsg:\t" << message << std::endl;                \
       std::exit(EXIT_FAILURE);                                                 \
     }                                                                          \
   } while (0)
 
 #define LOG(message)                                                           \
   do {                                                                         \
-    std::cout << "(LOG): " << message << std::endl;                            \
+    std::cout << "\x1b[30;1m(LOG):\x1b[0m " << message << std::endl;           \
   } while (0)
 
 #define LOGERR(message)                                                        \
   do {                                                                         \
-    std::cerr << "(LOG_ERR): " << message << std::endl;                        \
+    std::cerr << "\x1b[31;1m(LOG_ERR):\x1b[0m " << message << std::endl;       \
   } while (0)
 
 #ifndef NDEBUG
