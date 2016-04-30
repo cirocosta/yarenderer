@@ -2,7 +2,10 @@
 
 namespace yarenderer
 {
-BatchRenderer::BatchRenderer() { _init(); }
+BatchRenderer::BatchRenderer()
+{
+  _init();
+}
 
 BatchRenderer::~BatchRenderer()
 {
@@ -11,7 +14,8 @@ BatchRenderer::~BatchRenderer()
   glDeleteBuffers(1, &m_vao);
 }
 
-void BatchRenderer::_init()
+void
+BatchRenderer::_init()
 {
   // generate buffers
   glGenVertexArrays(1, &m_vao);
@@ -60,13 +64,15 @@ void BatchRenderer::_init()
   delete[] indices;
 }
 
-void BatchRenderer::begin()
+void
+BatchRenderer::begin()
 {
   glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
   m_buffer_map = (VertexData*)glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY);
 }
 
-void BatchRenderer::submit(const Renderable* renderable)
+void
+BatchRenderer::submit(const Renderable* renderable)
 {
   glm::vec3 position = renderable->getPosition();
   glm::vec2 size = renderable->getSize();
@@ -91,7 +97,7 @@ void BatchRenderer::submit(const Renderable* renderable)
 
   // upper left
   m_buffer_map->vertex =
-      glm::vec3(glm::vec4(position.x, position.y + size.y, position.z, 1.0));
+    glm::vec3(glm::vec4(position.x, position.y + size.y, position.z, 1.0));
   m_buffer_map->uv = uv[1];
   m_buffer_map->color = c;
   m_buffer_map++;
@@ -99,14 +105,14 @@ void BatchRenderer::submit(const Renderable* renderable)
   // upper right
   m_buffer_map->vertex = glm::vec3(
 
-      glm::vec4(position.x + size.x, position.y + size.y, position.z, 1.0));
+    glm::vec4(position.x + size.x, position.y + size.y, position.z, 1.0));
   m_buffer_map->uv = uv[2];
   m_buffer_map->color = c;
   m_buffer_map++;
 
   // bottom right
   m_buffer_map->vertex =
-      glm::vec3(glm::vec4(position.x + size.x, position.y, position.z, 1.0));
+    glm::vec3(glm::vec4(position.x + size.x, position.y, position.z, 1.0));
   m_buffer_map->uv = uv[3];
   m_buffer_map->color = c;
   m_buffer_map++;
@@ -116,13 +122,15 @@ void BatchRenderer::submit(const Renderable* renderable)
   m_index_count += 6;
 }
 
-void BatchRenderer::end()
+void
+BatchRenderer::end()
 {
   glUnmapBuffer(GL_ARRAY_BUFFER);
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-void BatchRenderer::flush()
+void
+BatchRenderer::flush()
 {
   glBindVertexArray(m_vao);
   m_ibo->bind();

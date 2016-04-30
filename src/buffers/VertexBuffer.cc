@@ -4,7 +4,7 @@ namespace yarenderer
 {
 
 VertexBuffer::VertexBuffer(GLfloat* data, GLsizei count, GLuint compCount)
-    : m_component_count(compCount)
+  : m_component_count(compCount)
 {
   glGenBuffers(1, &m_buffer_id);
   glBindBuffer(GL_ARRAY_BUFFER, m_buffer_id);
@@ -12,7 +12,7 @@ VertexBuffer::VertexBuffer(GLfloat* data, GLsizei count, GLuint compCount)
   glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
-VertexBuffer::~VertexBuffer ()
+VertexBuffer::~VertexBuffer()
 {
   ::glDeleteBuffers(1, &m_buffer_id);
 }

@@ -2,20 +2,21 @@
 #ifndef YARENDERER__GL_DEBUG_HH
 #define YARENDERER__GL_DEBUG_HH
 
-#include "debug.hh"
 #include "GL/glew.h"
+#include "debug.hh"
 
 namespace yarenderer
 {
 namespace utils
 {
 
-static void CheckOpenGLError(const char* stmt, const char* fname, int line)
+static void
+CheckOpenGLError(const char* stmt, const char* fname, int line)
 {
   GLenum err = glGetError();
   if (err != GL_NO_ERROR) {
     throw std::runtime_error(yarenderer::utils::str_fmt(
-        "OpenGL error %08x, at %s:%i - for %s\n", err, fname, line, stmt));
+      "OpenGL error %08x, at %s:%i - for %s\n", err, fname, line, stmt));
   }
 }
 } // ns yarenderer

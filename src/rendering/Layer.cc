@@ -4,7 +4,9 @@ namespace yarenderer
 {
 
 Layer::Layer(Renderer* renderer, Shader* shader, glm::mat4 projection)
-    : m_renderer(renderer), m_shader(shader), m_pr_matrix(projection)
+  : m_renderer(renderer)
+  , m_shader(shader)
+  , m_pr_matrix(projection)
 {
   m_shader->enable();
   m_shader->setUniformMat4("pr_matrix", m_pr_matrix);
@@ -20,7 +22,8 @@ Layer::~Layer()
     delete renderable;
 }
 
-void Layer::render()
+void
+Layer::render()
 {
   // FIXME do we really need to keep submiting stuff all the time?
   m_shader->enable();

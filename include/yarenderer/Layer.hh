@@ -2,8 +2,8 @@
 #define YARENDERER__LAYER_HH
 
 #include "rendering/Renderer.hh"
-#include "yarenderer/Renderable.hh"
 #include "shaders/Shader.hh"
+#include "yarenderer/Renderable.hh"
 
 #include <vector>
 

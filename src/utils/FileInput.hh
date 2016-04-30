@@ -1,14 +1,14 @@
 #ifndef YARENDERER__UTILS__FILEINPUT_HH
 #define YARENDERER__UTILS__FILEINPUT_HH
 
-#include <climits>
-#include <unistd.h>
-#include <libgen.h>
-#include <iostream>
 #include <cerrno>
+#include <climits>
 #include <cstdio>
 #include <cstring>
+#include <iostream>
+#include <libgen.h>
 #include <string>
+#include <unistd.h>
 
 #include "debug.hh"
 
@@ -35,10 +35,10 @@ public:
     fseek(file, 0, SEEK_SET);
     fread(data, 1, length, file);
     fclose(file);
-    std::string result (data);
+    std::string result(data);
     delete[] data;
     data = nullptr;
-    
+
     return result;
   }
 

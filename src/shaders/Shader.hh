@@ -6,9 +6,9 @@
 #include "utils/FileInput.hh"
 #include "utils/debug.hh"
 
+#include <map>
 #include <string>
 #include <vector>
-#include <map>
 
 namespace yarenderer
 {
@@ -37,8 +37,7 @@ public:
 
   inline void setUniformMat4(const GLchar* name, const glm::mat4& matrix)
   {
-    glUniformMatrix4fv(locations.at(name), 1, GL_FALSE,
-                       glm::value_ptr(matrix));
+    glUniformMatrix4fv(locations.at(name), 1, GL_FALSE, glm::value_ptr(matrix));
   }
 
   inline void setUniform4f(const GLchar* name, const glm::vec4& vec)

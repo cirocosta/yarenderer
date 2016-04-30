@@ -3,7 +3,10 @@
 namespace yarenderer
 {
 
-VertexArray::VertexArray() { glGenVertexArrays(1, &m_array_id); }
+VertexArray::VertexArray()
+{
+  glGenVertexArrays(1, &m_array_id);
+}
 
 VertexArray::~VertexArray()
 {
@@ -13,8 +16,8 @@ VertexArray::~VertexArray()
   glDeleteVertexArrays(1, &m_array_id);
 }
 
-
-void VertexArray::addBuffer(VertexBuffer* buffer, GLuint index)
+void
+VertexArray::addBuffer(VertexBuffer* buffer, GLuint index)
 {
   bind();
   buffer->bind();
