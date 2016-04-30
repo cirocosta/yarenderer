@@ -2,7 +2,7 @@
 #ifndef YARENDERER__GL_DEBUG_HH
 #define YARENDERER__GL_DEBUG_HH
 
-#include "GL/glew.h"
+#include "OpenGL/gl3.h"
 #include "debug.hh"
 
 namespace yarenderer

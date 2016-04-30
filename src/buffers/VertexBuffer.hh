@@ -1,7 +1,7 @@
 #ifndef YARENDERER__VERTEXBUFFER_HH
 #define YARENDERER__VERTEXBUFFER_HH
 
-#include "GL/glew.h"
+#include "OpenGL/gl3.h"
 
 namespace yarenderer
 {

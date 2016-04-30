@@ -1,7 +1,7 @@
 #include "yarenderer/Rect.hh"
 #include "yarenderer/TileLayer.hh"
 
-#include "GL/glew.h"
+#include "OpenGL/gl3.h"
 #include "OSContext.hh"
 
 #include <iostream>

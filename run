@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -e
+
+
+main () {
+  if [[ -z $1 ]]; then
+    run
+    exit 0
+  fi
+
+  case $1 in
+    clean)    clean
+              ;;
+  esac
+
+  exit 0
+}
+
+clean () {
+  echo "clealing build/"
+  rm -irf .build/*
+}
+
+run () {
+  echo "running test_window"
+  make -j9 -C ./build && ./build/tests/test_window
+}
+
+main "$@"

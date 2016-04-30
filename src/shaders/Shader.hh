@@ -1,7 +1,7 @@
 #ifndef YARENDERER__SHADER_HH
 #define YARENDERER__SHADER_HH
 
-#include "GL/glew.h"
+#include "OpenGL/gl3.h"
 #include "glm/gtc/type_ptr.hpp"
 #include "utils/FileInput.hh"
 #include "utils/debug.hh"

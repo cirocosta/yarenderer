@@ -1,8 +1,8 @@
 #ifndef YARENDERER__WINDOW_HH
 #define YARENDERER__WINDOW_HH
 
-#include "GL/glew.h"
 #include "GLFW/glfw3.h"
+#include "OpenGL/gl3.h"
 #include "utils/gl_debug.hh"
 
 #include <stdexcept>

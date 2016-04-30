@@ -27,6 +27,10 @@ Window::_init()
   if (!glfwInit())
     throw std::runtime_error("Failed to initialize GLFW");
 
+  glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
   glfwSetErrorCallback(_error_callback);
 
   std::cout << width << ":" << height << " " << m_title << std::endl;
@@ -42,8 +46,6 @@ Window::_init()
 
   glfwSwapInterval(1);
 
-  if (::glewInit() != GLEW_OK)
-    throw std::runtime_error("Couldn't initialize glew properly");
 }
 
 Window::~Window()

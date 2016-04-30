@@ -1,7 +1,7 @@
 #ifndef YARENDERER__INDEXBUFFER_HH
 #define YARENDERER__INDEXBUFFER_HH
 
-#include "GL/glew.h"
+#include "OpenGL/gl3.h"
 
 namespace yarenderer
 {

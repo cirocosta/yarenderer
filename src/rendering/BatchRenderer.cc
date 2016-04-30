@@ -17,6 +17,8 @@ BatchRenderer::~BatchRenderer()
 void
 BatchRenderer::_init()
 {
+  fprintf(stderr, "%s\n", "let's seee!");
+
   // generate buffers
   glGenVertexArrays(1, &m_vao);
   glGenBuffers(1, &m_vbo);
