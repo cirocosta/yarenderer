@@ -25,24 +25,19 @@ set(INCLUDES
 )
 
 #     --    dependencies
-
 find_package(OpenGL REQUIRED)
 set(LIBS ${LIBS} ${OPENGL_gl_LIBRARY})
 set(INCLUDES ${INCLUDES} ${OPENGL_INCLUDE_DIR})
-
-
-
 add_subdirectory(lib/)
 
-#     --    source
 
+#     --    source
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/src)
 add_subdirectory(src/)
 
 
 #     --    global variables
-
 set(${PROJECT_NAME}_INCLUDE_DIRS ${INCLUDES}
     CACHE INTERNAL
     "${PROJECT_NAME}: Include Directories"

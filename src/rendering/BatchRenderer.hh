@@ -2,9 +2,9 @@
 #define YARENDERER__BATCHRENDERER_HH
 
 #include "Renderer.hh"
-#include "yarenderer/Renderable.hh"
 #include "buffers/IndexBuffer.hh"
 #include "glm/gtc/type_ptr.hpp"
+#include "yarenderer/Renderable.hh"
 
 namespace yarenderer
 {
@@ -13,7 +13,7 @@ static const GLuint RENDERER_MAX_SPRITES = 1000;
 static const GLuint RENDERER_VERTEX_SIZE = sizeof(VertexData);
 static const GLuint RENDERER_SPRITE_SIZE = RENDERER_VERTEX_SIZE * 4;
 static const GLuint RENDERER_BUFFER_SIZE =
-    RENDERER_SPRITE_SIZE * RENDERER_MAX_SPRITES;
+  RENDERER_SPRITE_SIZE * RENDERER_MAX_SPRITES;
 static const GLuint RENDERER_INDICES_SIZE = RENDERER_MAX_SPRITES * 6;
 
 static const GLubyte SHADER_VERTEX_INDEX = 0;

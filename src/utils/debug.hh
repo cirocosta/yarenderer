@@ -1,10 +1,10 @@
 #ifndef YARENDERER__DEBUG_HH
 #define YARENDERER__DEBUG_HH
 
+#include <cstdio>
 #include <iostream>
 #include <memory>
 #include <string>
-#include <cstdio>
 
 namespace yarenderer
 {
@@ -12,7 +12,8 @@ namespace utils
 {
 
 template <typename... Args>
-static std::string str_fmt(const char* fmt, Args... args)
+static std::string
+str_fmt(const char* fmt, Args... args)
 {
   size_t size = std::snprintf(nullptr, 0, fmt, args...) + 1;
   std::unique_ptr<char[]> buf(new char[size]);

@@ -26,12 +26,14 @@ protected:
 
 public:
   Renderable(glm::vec3 p, glm::vec2 s, glm::vec4 c)
-      : m_position(p), m_size(s), m_color(c)
+    : m_position(p)
+    , m_size(s)
+    , m_color(c)
   {
     set_default_uvs();
   }
 
-  virtual ~Renderable() { }
+  virtual ~Renderable() {}
 
   inline const glm::vec3& getPosition() const { return m_position; }
   inline const glm::vec2& getSize() const { return m_size; }

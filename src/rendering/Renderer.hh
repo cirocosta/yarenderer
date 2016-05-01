@@ -9,12 +9,12 @@ class Renderer
 {
 public:
   Renderer() = default;
-  virtual ~Renderer() { }
+  virtual ~Renderer() {}
 
-  virtual void begin() { }
+  virtual void begin() {}
   virtual void submit(const Renderable* renderable) = 0;
   virtual void flush() = 0;
-  virtual void end() { }
+  virtual void end() {}
 };
 
 }; // ns yarenderer

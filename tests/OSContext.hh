@@ -12,8 +12,8 @@
 #include "GL/osmesa.h"
 #include "utils/debug.hh"
 
-#include <vector>
 #include <iostream>
+#include <vector>
 
 namespace yarenderer
 {
