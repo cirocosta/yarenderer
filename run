@@ -2,29 +2,77 @@
 
 set -e
 
+readonly __TRUE_RETURN=0
+readonly __FALSE_RETURN=1
 
 main () {
-  if [[ -z $1 ]]; then
-    run
-    exit 0
-  fi
-
   case $1 in
-    clean)    clean
+    clean)    [[ -d ./build ]] && clean
+              ;;
+
+    run)      [[ -d ./build ]] || init
+              run
+              ;;
+
+    init)     clean
+              init 
+              ;;
+    
+    format)   _check_clang_fmt
+              format 
+              ;;
+
+    *)        show_help
+              exit 0
               ;;
   esac
-
   exit 0
+}
+
+format ()  {
+  find ./src/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i     &
+  find ./include/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i &
+  find ./tests/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i   &
+
+  wait
 }
 
 clean () {
   echo "clealing build/"
-  rm -irf .build/*
+  rm -rf ./build
 }
 
 run () {
   echo "running test_window"
   make -j9 -C ./build && ./build/tests/test_window
+}
+
+init () {
+  echo "initializing build"
+  mkdir -p ./build 
+
+  pushd . >/dev/null
+  cd ./build
+  cmake -Dtest=ON -DCMAKE_BUILD_TYPE=Debug ..
+  popd >/dev/null 
+}
+
+show_help () {
+  cat <<EOF
+  Usage:
+    $ ./run <arg> [opt]
+
+  Arguments:
+    run     builds and runs test_window assuming that the proper
+            Makesfiles have been generated previously
+
+    init    prepares Makefiles from CMake in "./build"
+
+    clean   cleans the 'build repo'
+
+    format  formats sources and headers
+
+EOF
 }
 
 main "$@"
