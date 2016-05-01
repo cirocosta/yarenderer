@@ -2,26 +2,32 @@
 
 > **Y**et **A**nother **renderer**
 
-## Install
+  ```bash
+  $ git clone git@github.com:cirocosta/yarenderer.git     # clone repo
+  $ git submodule update --init --recursive               # fetch dependencies
+  ```
 
-```sh
-# fetch dependencies as well
-$ git submodule update --init --recursive --depth=10
+## Running
 
-# generate build files
-$ mkdir build
-$ cd build
-$ cmake -Dtest=ON -DCMAKE_BUILD_TYPE=Debug ..
+Initialize `build` directory:
 
-# build
-# -jN where N = #cores so that we build in parallel
-$ make -j5 
-$ ./src/main
+  ```bash
+  $ ./run init
+  ```
 
-# :D
-```
+Run the test:
+
+  ```bash
+  $ ./run run test_window
+  ```
 
 ### Dependencies
+
+#### Mac OSX
+
+If you have `cmake`, `clang-format` and `xcode-cli` properly installed, you're ready to run.
+
+#### Debian Based
 
 The project builds almost everything. You'll only need an OpenGL implementation (like [mesa](http://www.mesa3d.org/)) and, if you wish to include tests, an offscreen opengl implementation is required (`osmesa`). Both of them are easily installed from `apt`:
 
