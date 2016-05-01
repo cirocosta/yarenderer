@@ -1,7 +1,11 @@
 #ifndef YARENDERER__SHADER_HH
 #define YARENDERER__SHADER_HH
 
+#ifdef __APPLE__
 #include "OpenGL/gl3.h"
+#else
+#include "GL/glew.h"
+#endif
 #include "glm/gtc/type_ptr.hpp"
 #include "utils/FileInput.hh"
 #include "utils/debug.hh"

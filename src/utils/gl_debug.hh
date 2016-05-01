@@ -2,7 +2,11 @@
 #ifndef YARENDERER__GL_DEBUG_HH
 #define YARENDERER__GL_DEBUG_HH
 
+#ifdef __APPLE__
 #include "OpenGL/gl3.h"
+#else
+#include "GL/glew.h"
+#endif
 #include "debug.hh"
 
 namespace yarenderer

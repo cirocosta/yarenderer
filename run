@@ -18,8 +18,7 @@ main () {
               init 
               ;;
     
-    format)   _check_clang_fmt
-              format 
+    format)   format 
               ;;
 
     *)        show_help

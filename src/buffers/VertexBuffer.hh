@@ -1,7 +1,11 @@
 #ifndef YARENDERER__VERTEXBUFFER_HH
 #define YARENDERER__VERTEXBUFFER_HH
 
+#ifdef __APPLE__
 #include "OpenGL/gl3.h"
+#else
+#include "GL/glew.h"
+#endif
 
 namespace yarenderer
 {

@@ -46,6 +46,10 @@ Window::_init()
 
   glfwSwapInterval(1);
 
+#ifndef __APPLE__
+  if (::glewInit() != GLEW_OK)
+    throw std::runtime_error("Couldn't initialize glew propeerly");
+#endif
 }
 
 Window::~Window()

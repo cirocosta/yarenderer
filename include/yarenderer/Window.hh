@@ -2,7 +2,11 @@
 #define YARENDERER__WINDOW_HH
 
 #include "GLFW/glfw3.h"
+#ifdef __APPLE__
 #include "OpenGL/gl3.h"
+#else
+#include "GL/glew.h"
+#endif
 #include "utils/gl_debug.hh"
 
 #include <stdexcept>

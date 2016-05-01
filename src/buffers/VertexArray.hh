@@ -1,7 +1,11 @@
 #ifndef YARENDERER__VERTEXARRAY_HH
 #define YARENDERER__VERTEXARRAY_HH
 
+#ifdef __APPLE__
 #include "OpenGL/gl3.h"
+#else
+#include "GL/glew.h"
+#endif
 #include "VertexBuffer.hh"
 
 #include <vector>
