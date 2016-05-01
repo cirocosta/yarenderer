@@ -6,25 +6,27 @@ readonly __TRUE_RETURN=0
 readonly __FALSE_RETURN=1
 
 main () {
-  case $1 in
-    clean)    [[ -d ./build ]] && clean
-              ;;
+  for arg in $@; do
+    case $arg in
+      clean)    [[ -d ./build ]] && clean
+                ;;
 
-    run)      [[ -d ./build ]] || init
-              run
-              ;;
+      run)      [[ -d ./build ]] || init
+                run
+                ;;
 
-    init)     clean
-              init 
-              ;;
-    
-    format)   format 
-              ;;
+      init)     clean
+                init 
+                ;;
+      
+      format)   format 
+                ;;
 
-    *)        show_help
-              exit 0
-              ;;
-  esac
+      *)        show_help
+                exit 0
+                ;;
+    esac
+  done;
   exit 0
 }
 
