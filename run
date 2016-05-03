@@ -22,6 +22,11 @@ main () {
       format)   format 
                 ;;
 
+      search)   shift
+                ag --ignore-dir=lib --ignore-dir=build $@
+                exit 0
+                ;;
+
       *)        show_help
                 exit 0
                 ;;
@@ -72,6 +77,9 @@ show_help () {
     clean   cleans the 'build repo'
 
     format  formats sources and headers
+
+    search  searches for a given string in all the project except
+            for "build" and "lib" directories
 
 EOF
 }
