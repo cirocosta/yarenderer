@@ -33,7 +33,6 @@ Window::_init()
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
   glfwSetErrorCallback(_error_callback);
 
-  std::cout << width << ":" << height << " " << m_title << std::endl;
   m_window = glfwCreateWindow(width, height, m_title, NULL, NULL);
 
   if (!m_window)
