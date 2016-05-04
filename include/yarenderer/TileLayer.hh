@@ -14,6 +14,7 @@
 
 namespace yarenderer
 {
+
 class TileLayer : public Layer
 {
 public:

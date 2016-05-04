@@ -50,6 +50,7 @@ flags = [
     # our includes 
     '-I./lib/glew-cmake/include',
     '-I./lib/glfw/include',
+    '-I./lib/glm',
     '-I./include',
     '-I./src',
 ]
