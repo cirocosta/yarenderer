@@ -10,9 +10,11 @@ main () {
     case $arg in
       clean)    [[ -d ./build ]] && clean
                 ;;
-
-      run)      [[ -d ./build ]] || init
-                run
+                
+      run)      shift
+                [[ -d ./build ]] || init
+                run $@
+                exit 0
                 ;;
 
       init)     clean
@@ -49,8 +51,12 @@ clean () {
 }
 
 run () {
-  echo "running test_window"
-  make -j9 -C ./build && ./build/tests/test_window
+  [[ -z $1 ]] && (echo "Usage: ./run run <bin_name>"; exit 1)
+
+  local bin=$1
+
+  echo "running $bin"
+  make -j9 -C ./build && ./build/tests/$bin
 }
 
 init () {

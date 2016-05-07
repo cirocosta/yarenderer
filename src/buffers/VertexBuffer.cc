@@ -14,7 +14,7 @@ VertexBuffer::VertexBuffer(GLfloat* data, GLsizei count, GLuint compCount)
 
 VertexBuffer::~VertexBuffer()
 {
-  ::glDeleteBuffers(1, &m_buffer_id);
+  glDeleteBuffers(1, &m_buffer_id);
 }
 
 }; // ns yarenderer

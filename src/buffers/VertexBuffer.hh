@@ -1,16 +1,12 @@
 #ifndef YARENDERER__VERTEXBUFFER_HH
 #define YARENDERER__VERTEXBUFFER_HH
 
-#ifdef __APPLE__
-#include "OpenGL/gl3.h"
-#else
-#include "GL/glew.h"
-#endif
+#include "Buffer.hh"
 
 namespace yarenderer
 {
 
-class VertexBuffer
+class VertexBuffer : public Buffer
 {
 private:
   GLuint m_buffer_id;
@@ -25,6 +21,8 @@ public:
   inline void unbind() const { glBindBuffer(GL_ARRAY_BUFFER, 0); }
 
   inline GLuint getComponentCount() const { return m_component_count; }
+
+  inline GLuint getBufferId() { return this->m_buffer_id; }
 };
 
 }; // ns yarenderer
