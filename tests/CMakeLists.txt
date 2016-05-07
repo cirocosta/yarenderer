@@ -1,23 +1,12 @@
-# -- on-screen and Utils
+# -- tests
 
 include_directories(${yarenderer_INCLUDE_DIRS})
 
-add_executable(test_window test_window.cc)
-target_link_libraries(test_window ${yarenderer_LIBRARY})
 
-
-# -- OSContext helper
-
-include_directories(${OSMESA_INCLUDE_DIR})
-add_library(oscontext OSContext.cc)
-target_link_libraries(oscontext ${OSMESA_LIBRARY})
-
-
-# -- off-screen tests
-
-add_executable(test_shaders test_shaders.cc)
-target_link_libraries(test_shaders
-  ${yarenderer_LIBRARY}
-  oscontext
-)
-
+file(GLOB_RECURSE tests "test_*.cc")
+foreach(file ${tests})
+  get_filename_component(testname ${file} NAME_WE)
+  add_executable(${testname} ${file})
+  target_link_libraries(${testname} ${yarenderer_LIBRARY})
+  add_test(NAME ${testname} COMMAND ${testname})
+endforeach()

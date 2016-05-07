@@ -14,9 +14,9 @@ class Buffer
 {
 public:
   virtual ~Buffer() = default;
-  virtual void bind() = 0;
-  virtual void unbind() = 0;
-  virtual GLuint getBufferId() = 0;
+  virtual void bind() const = 0;
+  virtual void unbind() const = 0;
+  virtual GLuint getBufferId() const = 0;
 };
 
 }; // ns yarenderer

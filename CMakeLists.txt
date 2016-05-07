@@ -6,7 +6,6 @@ option(test "Include Tests." OFF)
 set(PROJECT_NAME yarenderer)
 project(${PROJECT_NAME} C CXX)
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
-set(BUILD_SHARED_LIBS ON)
 
 include(CheckCXXCompilerFlag)
 CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
@@ -17,9 +16,8 @@ else()
     message(STATUS "Please use a different C++ compiler.")
 endif()
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake/Modules)
 set(LIBS "")
-set(INCLUDES 
+set(INCLUDES
   ${PROJECT_SOURCE_DIR}
   ${PROJECT_SOURCE_DIR}/include
 )
@@ -57,6 +55,5 @@ set(${PROJECT_NAME}_LIBRARY yarenderer
 )
 
 if (test)
-  find_package(OSMesa)
   add_subdirectory(tests/)
 endif()

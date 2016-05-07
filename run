@@ -6,11 +6,16 @@ readonly __TRUE_RETURN=0
 readonly __FALSE_RETURN=1
 
 main () {
+  if [[ -z $1 ]]; then
+    show_help
+    exit 0
+  fi
+
   for arg in $@; do
     case $arg in
       clean)    [[ -d ./build ]] && clean
                 ;;
-                
+
       run)      shift
                 [[ -d ./build ]] || init
                 run $@
@@ -18,10 +23,10 @@ main () {
                 ;;
 
       init)     clean
-                init 
+                init
                 ;;
-      
-      format)   format 
+
+      format)   format
                 ;;
 
       search)   shift
@@ -38,7 +43,7 @@ main () {
 }
 
 format ()  {
-  local cfmt_opts=("-i" "-style=file") 
+  local cfmt_opts=("-i" "-style=file")
 
   find ./src/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format "$cfmt_opts"     &
   find ./include/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format "$cfmt_opts" &
@@ -63,12 +68,12 @@ run () {
 
 init () {
   echo "initializing build"
-  mkdir -p ./build 
+  mkdir -p ./build
 
   pushd . >/dev/null
   cd ./build
   cmake -Dtest=ON -DCMAKE_BUILD_TYPE=Debug ..
-  popd >/dev/null 
+  popd >/dev/null
 }
 
 show_help () {

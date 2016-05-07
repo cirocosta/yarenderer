@@ -2,19 +2,15 @@
 #include "yarenderer/TileLayer.hh"
 
 #include "OpenGL/gl3.h"
-#include "OSContext.hh"
 
 #include <iostream>
 
 using namespace yarenderer;
-using yarenderer::utils::OSContext;
 
 int
 main(int argc, char* argv[])
 {
-  OSContext ctx(400, 400);
-  ctx.make_current();
-
+  //  todo fix
   glClearColor(1.0, 1.0, 1.0, 1.0);
 
   TileLayer layer;

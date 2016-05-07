@@ -1,5 +1,5 @@
-#ifndef YARENDERER__FRAMEBUFFEROBJECT_HH
-#define YARENDERER__FRAMEBUFFEROBJECT_HH
+#ifndef YARENDERER__FRAMEBUFFER_HH
+#define YARENDERER__FRAMEBUFFER_HH
 
 #include "Buffer.hh"
 #include "RenderBuffer.hh"
@@ -9,18 +9,18 @@ namespace yarenderer
 
 static const GLuint RENDERER_WINDOW_FB = 0;
 
-class FrameBufferObject : public Buffer
+class FrameBuffer : public Buffer
 {
 private:
   GLuint m_buffer_id;
 
 public:
-  FrameBufferObject()
+  FrameBuffer()
   {
     glGenFramebuffers(1, &m_buffer_id);
   }
 
-  ~FrameBufferObject()
+  ~FrameBuffer()
   {
     glDeleteFramebuffers(1, &m_buffer_id);
   }
@@ -37,24 +37,24 @@ public:
                               GL_RENDERBUFFER, 0);
   }
 
-  void bind() const
+  void bind() const override
   {
     glBindFramebuffer(GL_FRAMEBUFFER, m_buffer_id);
   }
 
-  void unbind() const
+  void unbind() const override
   {
     glBindFramebuffer(GL_FRAMEBUFFER, RENDERER_WINDOW_FB);
+  }
+
+  GLuint getBufferId() const override
+  {
+    return this->m_buffer_id;
   }
 
   bool canRender()
   {
     return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
-  }
-
-  GLuint getBufferId()
-  {
-    return this->m_buffer_id;
   }
 
   static bool isSupported()
