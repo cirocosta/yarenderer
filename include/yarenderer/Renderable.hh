@@ -18,7 +18,10 @@ class Renderable
 {
 protected:
   // a group (inherits from renderable) won't set color and other stuff
-  Renderable() { set_default_uvs(); }
+  Renderable()
+  {
+    set_default_uvs();
+  }
   const glm::vec3 m_position;
   const glm::vec2 m_size;
   const glm::vec4 m_color;
@@ -33,14 +36,31 @@ public:
     set_default_uvs();
   }
 
-  virtual ~Renderable() {}
+  virtual ~Renderable()
+  {
+  }
 
-  inline const glm::vec3& getPosition() const { return m_position; }
-  inline const glm::vec2& getSize() const { return m_size; }
-  inline const glm::vec4& getColor() const { return m_color; }
-  inline const std::vector<glm::vec2>& getUVs() const { return m_uvs; }
+  inline const glm::vec3& getPosition() const
+  {
+    return m_position;
+  }
+  inline const glm::vec2& getSize() const
+  {
+    return m_size;
+  }
+  inline const glm::vec4& getColor() const
+  {
+    return m_color;
+  }
+  inline const std::vector<glm::vec2>& getUVs() const
+  {
+    return m_uvs;
+  }
 
-  virtual void submit(Renderer* renderer) const { renderer->submit(this); }
+  virtual void submit(Renderer* renderer) const
+  {
+    renderer->submit(this);
+  }
 
 private:
   // FIXME

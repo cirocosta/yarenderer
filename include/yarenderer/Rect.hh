@@ -14,7 +14,9 @@ public:
     : Renderable(glm::vec3(x, y, z), glm::vec2(width, height), glm::vec4())
   {
   }
-  virtual ~Rect() {}
+  virtual ~Rect()
+  {
+  }
 };
 
 } // ns yarenderer

@@ -30,9 +30,15 @@ public:
   {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_buffer_id);
   }
-  inline void unbind() const { glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0); }
+  inline void unbind() const
+  {
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+  }
 
-  inline GLuint getCount() const { return m_count; }
+  inline GLuint getCount() const
+  {
+    return m_count;
+  }
 };
 
 } // ns yarenderer

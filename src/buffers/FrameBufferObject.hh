@@ -15,36 +15,50 @@ private:
   GLuint m_buffer_id;
 
 public:
-  inline FrameBufferObject() { glGenFramebuffers(1, &m_buffer_id); }
+  FrameBufferObject()
+  {
+    glGenFramebuffers(1, &m_buffer_id);
+  }
 
-  inline ~FrameBufferObject() { glDeleteFramebuffers(1, &m_buffer_id); }
+  ~FrameBufferObject()
+  {
+    glDeleteFramebuffers(1, &m_buffer_id);
+  }
 
-  inline void attachRBO(RenderBuffer* rbo)
+  void attachRBO(RenderBuffer* rbo)
   {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
                               GL_RENDERBUFFER, rbo->getBufferId());
   }
 
-  inline void dettachRBO()
+  void dettachRBO()
   {
     glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
                               GL_RENDERBUFFER, 0);
   }
 
-  inline void bind() const { glBindFramebuffer(GL_FRAMEBUFFER, m_buffer_id); }
+  void bind() const
+  {
+    glBindFramebuffer(GL_FRAMEBUFFER, m_buffer_id);
+  }
 
-  inline void unbind() const
+  void unbind() const
   {
     glBindFramebuffer(GL_FRAMEBUFFER, RENDERER_WINDOW_FB);
   }
 
-  inline bool canRender() {
+  bool canRender()
+  {
     return glCheckFramebufferStatus(GL_FRAMEBUFFER) == GL_FRAMEBUFFER_COMPLETE;
   }
 
-  inline GLuint getBufferId() { return this->m_buffer_id; }
+  GLuint getBufferId()
+  {
+    return this->m_buffer_id;
+  }
 
-  static bool isSupported () {
+  static bool isSupported()
+  {
     return false;
   }
 };

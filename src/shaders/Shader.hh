@@ -30,9 +30,15 @@ public:
          const std::vector<std::string>& uniform_locations);
   ~Shader();
 
-  inline void enable() const { glUseProgram(m_shader_id); }
+  inline void enable() const
+  {
+    glUseProgram(m_shader_id);
+  }
 
-  inline void disable() const { glUseProgram(0); }
+  inline void disable() const
+  {
+    glUseProgram(0);
+  }
 
   inline GLint getLocation(const std::string& loc) const
   {

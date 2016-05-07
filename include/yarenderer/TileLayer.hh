@@ -26,7 +26,9 @@ public:
   {
   }
 
-  inline ~TileLayer() {}
+  inline ~TileLayer()
+  {
+  }
 };
 
 } // ns yarenderer

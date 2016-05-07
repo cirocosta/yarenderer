@@ -19,9 +19,18 @@ public:
   ~VertexArray();
 
   void addBuffer(VertexBuffer* buffer, GLuint index);
-  inline void bind() const { glBindVertexArray(m_array_id); }
-  inline void unbind() const { glBindVertexArray(0); }
-  inline GLuint getBufferId() { return this->m_array_id; }
+  inline void bind() const
+  {
+    glBindVertexArray(m_array_id);
+  }
+  inline void unbind() const
+  {
+    glBindVertexArray(0);
+  }
+  inline GLuint getBufferId()
+  {
+    return this->m_array_id;
+  }
 };
 
 } // ns yarenderer

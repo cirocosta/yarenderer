@@ -1,6 +1,7 @@
 #include "yarenderer/Rect.hh"
 #include "yarenderer/TileLayer.hh"
 #include "yarenderer/Window.hh"
+#include "buffers/FrameBufferObject.hh"
 #include <unistd.h>
 
 #include <iostream>
@@ -12,6 +13,8 @@ main()
 {
   Window window("yarenderer", 400, 400);
   glClearColor(1.0, 1.0, 1.0, 1.0);
+
+  FrameBufferObject fbo;
 
   TileLayer layer;
   layer.add(new Rect(0.0, 0.0, 5.0, 5.0));

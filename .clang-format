@@ -1,3 +1,5 @@
+---
 BasedOnStyle: Mozilla
+AllowShortFunctionsOnASingleLine: false
 BreakBeforeBraces: Linux
 AlwaysBreakTemplateDeclarations: true

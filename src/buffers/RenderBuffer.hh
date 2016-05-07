@@ -18,13 +18,25 @@ public:
     glRenderbufferStorage(GL_RENDERBUFFER, GL_RGB, width, height);
   }
 
-  inline ~RenderBuffer() { glDeleteFramebuffers(1, &m_buffer_id); }
+  inline ~RenderBuffer()
+  {
+    glDeleteFramebuffers(1, &m_buffer_id);
+  }
 
-  inline void bind() const { glBindRenderbuffer(GL_RENDERBUFFER, m_buffer_id); }
+  inline void bind() const
+  {
+    glBindRenderbuffer(GL_RENDERBUFFER, m_buffer_id);
+  }
 
-  inline void unbind() const { glBindRenderbuffer(GL_RENDERBUFFER, 0); }
+  inline void unbind() const
+  {
+    glBindRenderbuffer(GL_RENDERBUFFER, 0);
+  }
 
-  inline GLuint getBufferId() { return this->m_buffer_id; }
+  inline GLuint getBufferId()
+  {
+    return this->m_buffer_id;
+  }
 };
 
 }; // ns yarendrer

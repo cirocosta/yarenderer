@@ -16,13 +16,25 @@ public:
   VertexBuffer(GLfloat* data, GLsizei count, GLuint component_count);
   ~VertexBuffer();
 
-  inline void bind() const { glBindBuffer(GL_ARRAY_BUFFER, m_buffer_id); }
+  inline void bind() const
+  {
+    glBindBuffer(GL_ARRAY_BUFFER, m_buffer_id);
+  }
 
-  inline void unbind() const { glBindBuffer(GL_ARRAY_BUFFER, 0); }
+  inline void unbind() const
+  {
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+  }
 
-  inline GLuint getComponentCount() const { return m_component_count; }
+  inline GLuint getComponentCount() const
+  {
+    return m_component_count;
+  }
 
-  inline GLuint getBufferId() { return this->m_buffer_id; }
+  inline GLuint getBufferId()
+  {
+    return this->m_buffer_id;
+  }
 };
 
 }; // ns yarenderer

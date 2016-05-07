@@ -38,9 +38,11 @@ main () {
 }
 
 format ()  {
-  find ./src/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i     &
-  find ./include/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i &
-  find ./tests/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format -i   &
+  local cfmt_opts=("-i" "-style=file") 
+
+  find ./src/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format "$cfmt_opts"     &
+  find ./include/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format "$cfmt_opts" &
+  find ./tests/ -name "*.cc" -o -name "*.hh" -print0 | xargs -0 clang-format "$cfmt_opts"   &
 
   wait
 }
