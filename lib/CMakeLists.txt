@@ -1,13 +1,18 @@
 set(LOCAL_INCLUDES "")
 set(LOCAL_LIBS "")
 
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-deprecated")
+
 #     --    glfw
-set(GLFW_CLIENT_LIBRARY "opengl")
-set(GLFW_BUILD_EXAMPLES OFF)
-set(GLFW_BUILD_TESTS OFF)
-set(GLFW_BUILD_DOCS OFF)
+option(GLFW_CLIENT_LIBRARY "opengl")
+option(GLFW_BUILD_EXAMPLES OFF)
+option(GLFW_BUILD_TESTS OFF)
+option(GLFW_BUILD_DOCS OFF)
+
 
 add_subdirectory(glfw/)
+message("glfw build examples: ${GLFW_BUILD_EXAMPLES}")
+
 set(LOCAL_INCLUDES ${LOCAL_INCLUDES} ${GLFW_SOURCE_DIR}/include)
 set(LOCAL_LIBS ${LOCAL_LIBS} glfw ${GLFW_LIBRARIES})
 

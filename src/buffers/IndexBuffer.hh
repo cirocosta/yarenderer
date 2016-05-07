@@ -1,11 +1,7 @@
 #ifndef YARENDERER__INDEXBUFFER_HH
 #define YARENDERER__INDEXBUFFER_HH
 
-#ifdef __APPLE__
-#include "OpenGL/gl3.h"
-#else
-#include "GL/glew.h"
-#endif
+#include "Buffer.hh"
 
 namespace yarenderer
 {

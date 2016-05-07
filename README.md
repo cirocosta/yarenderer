@@ -25,7 +25,12 @@ Run the test:
 
 #### Mac OSX
 
-If you have `cmake`, `clang-format` and `xcode-cli` properly installed, you're ready to run.
+If you have `cmake`, `clang-format` and `xcode-cli` properly installed, you're almost ready to run.
+
+Install freeimage
+  ```
+  $ brew install freeimage
+  ```
 
 #### Debian Based
 
@@ -43,9 +48,9 @@ Ubuntu 14.04.3 has a problem with the apt version of libosmesa6. If you encounte
  wget -nc ftp://ftp.freedesktop.org/pub/mesa/current/mesa-10.5.4.tar.xz
  tar -xf mesa-10.5.4.tar.xz
  cd mesa-10.5.4/
- 
+
  autoreconf -fi
- 
+
  ./configure \
    CXXFLAGS="-O2 -g -DDEFAULT_SOFTWARE_DEPTH_BITS=31" \
    CFLAGS="-O2 -g -DDEFAULT_SOFTWARE_DEPTH_BITS=31" \

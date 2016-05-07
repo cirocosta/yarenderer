@@ -1,8 +1,6 @@
 #include "yarenderer/Rect.hh"
 #include "yarenderer/TileLayer.hh"
 
-#include "OpenGL/gl3.h"
-
 #include <iostream>
 
 using namespace yarenderer;

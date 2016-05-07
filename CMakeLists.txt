@@ -16,6 +16,7 @@ else()
     message(STATUS "Please use a different C++ compiler.")
 endif()
 
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 set(LIBS "")
 set(INCLUDES
   ${PROJECT_SOURCE_DIR}
@@ -23,6 +24,11 @@ set(INCLUDES
 )
 
 #     --    dependencies
+
+find_package(FreeImage REQUIRED)
+set(LIBS ${LIBS} ${FREEIMAGE_LIBRARIES})
+set(INCLUDES ${INCLUDES} ${FREEIMAGE_INCLUDE_DIRS})
+
 find_package(OpenGL REQUIRED)
 set(LIBS ${LIBS} ${OPENGL_gl_LIBRARY})
 set(INCLUDES ${INCLUDES} ${OPENGL_INCLUDE_DIR})
