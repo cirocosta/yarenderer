@@ -26,8 +26,8 @@ Shader::_load(const std::vector<std::string>& ulocs)
   GLuint fragment = glCreateShader(GL_FRAGMENT_SHADER);
   GLint result;
 
-  std::string vertSourceStr = utils::FileInput::read_file(m_vertex_path);
-  std::string fragSourceStr = utils::FileInput::read_file(m_fragment_path);
+  std::string vertSourceStr = utils::IO::read_file(m_vertex_path);
+  std::string fragSourceStr = utils::IO::read_file(m_fragment_path);
 
   const char* vertSource = vertSourceStr.c_str();
   const char* fragSource = fragSourceStr.c_str();

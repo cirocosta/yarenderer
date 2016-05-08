@@ -1,8 +1,8 @@
 #ifndef YARENDERER__WINDOW_HH
 #define YARENDERER__WINDOW_HH
 
-#include "yarenderer/GL.hh"
 #include "GLFW/glfw3.h"
+#include "yarenderer/GL.hh"
 #include <stdexcept>
 
 namespace yarenderer

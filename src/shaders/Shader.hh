@@ -1,10 +1,10 @@
 #ifndef YARENDERER__SHADER_HH
 #define YARENDERER__SHADER_HH
 
-#include "yarenderer/GL.hh"
 #include "glm/gtc/type_ptr.hpp"
-#include "utils/FileInput.hh"
+#include "utils/IO.hh"
 #include "utils/debug.hh"
+#include "yarenderer/GL.hh"
 
 #include <map>
 #include <string>

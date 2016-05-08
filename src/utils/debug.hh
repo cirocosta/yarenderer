@@ -22,6 +22,8 @@ str_fmt(const char* fmt, Args... args)
   return std::string(buf.get(), buf.get() + size - 1);
 }
 
+
+
 } // ns yarenderer
 } // ns utils
 

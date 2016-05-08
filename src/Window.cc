@@ -69,6 +69,7 @@ Window::update()
   glfwPollEvents();
   glfwSwapBuffers(m_window);
 }
+
 void
 Window::clear() const
 {

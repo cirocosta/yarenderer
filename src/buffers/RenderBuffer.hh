@@ -10,12 +10,13 @@ class RenderBuffer : public Buffer
 {
 private:
   GLuint m_buffer_id;
+  GLsizei m_width;
+  GLsizei m_height;
 
 public:
-  RenderBuffer(GLsizei width, GLsizei height)
+  RenderBuffer(GLsizei width, GLsizei height) : m_width(width), m_height(height)
   {
     glGenFramebuffers(1, &m_buffer_id);
-    glRenderbufferStorage(GL_RENDERBUFFER, GL_RGB, width, height);
   }
 
   ~RenderBuffer()
@@ -25,6 +26,7 @@ public:
 
   void bind() const override
   {
+    glRenderbufferStorage(GL_RENDERBUFFER, GL_BGR, m_width, m_height);
     glBindRenderbuffer(GL_RENDERBUFFER, m_buffer_id);
   }
 
