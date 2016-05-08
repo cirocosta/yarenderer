@@ -18,7 +18,7 @@ Layer::~Layer()
   delete m_shader;
   delete m_renderer;
 
-  for (Renderable* renderable : m_renderables)
+  for (Renderable2D* renderable : m_renderables)
     delete renderable;
 }
 
@@ -28,7 +28,7 @@ Layer::render()
   // FIXME do we really need to keep submiting stuff all the time?
   m_shader->enable();
   m_renderer->begin();
-  for (const Renderable* renderable : m_renderables)
+  for (const Renderable2D* renderable : m_renderables)
     renderable->submit(m_renderer);
   m_renderer->end();
   m_renderer->flush();

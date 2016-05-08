@@ -2,9 +2,10 @@
 #define YARENDERER__BATCHRENDERER_HH
 
 #include "Renderer.hh"
+#include "VertexData.hh"
 #include "buffers/IndexBuffer.hh"
 #include "glm/gtc/type_ptr.hpp"
-#include "yarenderer/Renderable.hh"
+#include "yarenderer/Renderable2D.hh"
 
 namespace yarenderer
 {
@@ -35,7 +36,7 @@ public:
   virtual ~BatchRenderer();
 
   void begin() override;
-  void submit(const Renderable* renderable) override;
+  void submit(const Renderable2D* renderable) override;
   void end() override;
   void flush() override;
 

@@ -1,5 +1,5 @@
-#ifndef YARENDERER__RENDERABLE_HH
-#define YARENDERER__RENDERABLE_HH
+#ifndef YARENDERER__RENDERABLE2D_HH
+#define YARENDERER__RENDERABLE2D_HH
 
 #include "glm/gtc/type_ptr.hpp"
 #include "rendering/Renderer.hh"
@@ -8,19 +8,13 @@
 namespace yarenderer
 {
 
-struct VertexData {
-  glm::vec3 vertex;
-  glm::vec2 uv;
-  unsigned color;
-};
-
-class Renderable
+class Renderable2D
 {
 protected:
   // a group (inherits from renderable) won't set color and other stuff
-  Renderable()
+  Renderable2D()
   {
-    set_default_uvs();
+    _set_default_uvs();
   }
   const glm::vec3 m_position;
   const glm::vec2 m_size;
@@ -28,15 +22,15 @@ protected:
   std::vector<glm::vec2> m_uvs;
 
 public:
-  Renderable(glm::vec3 p, glm::vec2 s, glm::vec4 c)
-    : m_position(p)
-    , m_size(s)
-    , m_color(c)
+  Renderable2D(glm::vec3 position, glm::vec2 size, glm::vec4 color)
+    : m_position(position)
+    , m_size(size)
+    , m_color(color)
   {
-    set_default_uvs();
+    _set_default_uvs();
   }
 
-  virtual ~Renderable()
+  virtual ~Renderable2D()
   {
   }
 
@@ -64,7 +58,7 @@ public:
 
 private:
   // FIXME
-  void set_default_uvs()
+  void _set_default_uvs()
   {
     m_uvs.push_back(glm::vec2(0, 0));
     m_uvs.push_back(glm::vec2(0, 1));

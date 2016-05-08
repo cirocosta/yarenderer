@@ -3,7 +3,7 @@
 
 namespace yarenderer
 {
-class Renderable;
+class Renderable2D;
 
 class Renderer
 {
@@ -16,7 +16,7 @@ public:
   virtual void begin()
   {
   }
-  virtual void submit(const Renderable* renderable) = 0;
+  virtual void submit(const Renderable2D* renderable) = 0;
   virtual void flush() = 0;
   virtual void end()
   {

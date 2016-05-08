@@ -72,7 +72,7 @@ BatchRenderer::begin()
 }
 
 void
-BatchRenderer::submit(const Renderable* renderable)
+BatchRenderer::submit(const Renderable2D* renderable)
 {
   glm::vec3 position = renderable->getPosition();
   glm::vec2 size = renderable->getSize();
