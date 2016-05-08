@@ -45,7 +45,6 @@ public:
     return result;
   }
 
-
   static BYTE* read_image(const char* filename, GLsizei* width, GLsizei* height)
   {
     FREE_IMAGE_FORMAT format = FIF_UNKNOWN;

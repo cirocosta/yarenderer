@@ -14,7 +14,9 @@ private:
   GLsizei m_height;
 
 public:
-  RenderBuffer(GLsizei width, GLsizei height) : m_width(width), m_height(height)
+  RenderBuffer(GLsizei width, GLsizei height)
+    : m_width(width)
+    , m_height(height)
   {
     glGenFramebuffers(1, &m_buffer_id);
   }
