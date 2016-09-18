@@ -23,14 +23,18 @@ Run the test:
 
 ### Dependencies
 
+Dependencies vary on your OS distribution.
+
 #### Mac OSX
 
 If you have `cmake`, `clang-format` and `xcode-cli` properly installed, you're almost ready to run.
 
 Install freeimage
+
   ```
   $ brew install freeimage
   ```
+
 
 #### Debian Based
 
@@ -68,6 +72,7 @@ Ubuntu 14.04.3 has a problem with the apt version of libosmesa6. If you encounte
 ```
 
 Set the env variable `MESA_DIR` in your shell rc and you're ready to go.
+
 
 ## LICENSE
 

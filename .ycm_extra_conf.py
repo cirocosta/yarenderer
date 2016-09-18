@@ -47,7 +47,7 @@ flags = [
     '-isystem/System/Library/Frameworks',
     '-isystem/Library/Frameworks',
 
-    # our includes 
+    # our includes
     '-I./lib/glew-cmake/include',
     '-I./lib/glfw/include',
     '-I./lib/glm',
